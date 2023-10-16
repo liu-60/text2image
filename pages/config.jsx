@@ -39,6 +39,9 @@ class ConfigPage extends React.Component {
     this.setState({
       loading: true
     })
+    await kv.set(this.state.inputKey, this.state.inputValue);
+    let value = await kv.get(this.state.inputKey);
+    console.log('--', value)
     // await fetch(`https://blessed-grubworm-41727.kv.vercel-storage.com/`, {
     //   headers: {
     //     Authorization: `Bearer AaL_ASQgOGE2ZGYxZGItMTY4Zi00ZWVjLTk3MTktNGZhMWE2NjQ5NDZjYmY4YzkzMzA1YzI0NGQ0NWFmNDRjN2JhZjQ2NzY5N2U=`,
@@ -49,17 +52,17 @@ class ConfigPage extends React.Component {
     //   .then((response) => response.json())
     //   .then((data) => console.log(data));
 
-      await fetch(`${process.env.KV_REST_API_URL}/set/${this.state.inputKey}/${this.state.inputValue}`, {
-  headers: {
-    Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    this.setState({
-      loading: false
+    await fetch(`${process.env.KV_REST_API_URL}/set/${this.state.inputKey}/${this.state.inputValue}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`,
+      },
     })
-  });
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          loading: false
+        })
+      });
     // const firstExampleValue1 = await firstConfig.get('test');
     // console.log('configItems', firstExampleValue1)
     // await axios.get('/welcome').then(res => {
