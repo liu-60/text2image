@@ -98,7 +98,7 @@ class ConfigPage extends React.Component {
       });
   }
 
-  render(): ReactNode {
+  render() {
     return (
       <div className='config-page'>
         <div>
