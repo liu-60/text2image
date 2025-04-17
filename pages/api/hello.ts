@@ -4,12 +4,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 type Data = {
   name: string
 }
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({
+/*
+*{
     Name: "DEMO日历",
     Version: "1.0",
     Generated: "20250417T23207Z",
@@ -29,5 +25,12 @@ export default function handler(
             },   
         ]
     }
-})
+}
+*/
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
+  res.status(200).json({ name: 'LL' })
 }
